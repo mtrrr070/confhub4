@@ -265,6 +265,8 @@ h2 {
   font-size: .76rem;
   line-height: 1.4;
   color: #ffe97a;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
   transform: translateY(12px);
   transition: max-height .5s ease, opacity .4s ease .1s, transform .4s ease .1s, margin-top .4s ease;
 }
@@ -633,3 +635,39 @@ input:focus, select:focus {
 }
 .s-more p + p { margin-top: 12px; }
 .schedule .s-title { font-weight: 500; }
+
+/* ===== Спикеры на телефоне и планшете (без мыши) =====
+   Вместо показа по наведению — фото сверху, информация всегда под ним */
+@media (hover: none), (max-width: 560px) {
+  .speakers { grid-template-columns: 1fr; gap: 16px; }
+  .speakers .speaker {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+  }
+  .speakers .speaker img {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    transform: none !important;
+  }
+  .speakers .speaker::after { display: none; }
+  .speakers .speaker .speaker-info {
+    position: static;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  }
+  .speakers .speaker .speaker-info h3 { font-size: 1rem; }
+  .speakers .speaker .speaker-info p {
+    max-height: none !important;
+    opacity: 1;
+    overflow: visible;
+    margin-top: 8px;
+    transform: none;
+    font-size: .85rem;
+    white-space: pre-line;      /* сохраняет переносы строк из текста */
+    overflow-wrap: anywhere;    /* длинные email не вылезают за карточку */
+  }
+}
