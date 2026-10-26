@@ -199,5 +199,5 @@ document.querySelectorAll(".lang button").forEach(b => {
   try { saved = localStorage.getItem("lang"); } catch (e) {}
   const fromUrl = new URLSearchParams(location.search).get("lang");
   const start = [fromUrl, saved].find(l => l && window.I18N[l]) || "ru";
-  if (start !== "ru") applyLang(start);
+  applyLang(start); // русский тоже из i18n.js — единый источник текста
 })();
