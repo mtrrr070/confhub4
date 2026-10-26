@@ -5,9 +5,21 @@
 const EVENT_DATE = new Date("2026-10-30T10:00:00+05:00");
 // Адрес, куда отправляются данные формы (PHP, Google Apps Script, Formspree и т.п.).
 // Пока пусто — заявка сохраняется локально в браузере (режим демо).
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxKsSsnT5Q9dhvuHY2MA-EnKaAsvVgCPcq_IrE69ELNy059eNWj0THq-NqSaLlZHLo2-w/exec";
 // Телефон, который показывается в сообщении об ошибке отправки
 const CONTACT_PHONE = "+7 (701) 427-88-11";
+if (FORM_ENDPOINT) {
+  const res = await fetch(FORM_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error("HTTP " + res.status);
+  const json = await res.json();
+  if (!json.ok) throw new Error(json.error || "Server error");
+} else {
+  // демо-режим (localStorage) — без изменений
+}
 
 /* ===== Язык: ru / kk / en (тексты — в i18n.js) ===== */
 let currentLang = "ru";
