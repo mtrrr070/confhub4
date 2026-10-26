@@ -5,7 +5,7 @@
 const EVENT_DATE = new Date("2026-10-30T10:00:00+05:00");
 // Адрес, куда отправляются данные формы (PHP, Google Apps Script, Formspree и т.п.).
 // Пока пусто — заявка сохраняется локально в браузере (режим демо).
-const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzEKcBIVDILJk6HocCkUCMuod1xIuFNWsMmhL13OrXxLgaJmSuJzmE4N6dyQmfBYWBi/exec";
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyvj5WeJYqmtypCQLKK3O0Xt8SJJasl1aFGGGAsHufS7QaJQa75uJeQedF9myOVpmuk/exec";
 // Телефон, который показывается в сообщении об ошибке отправки
 const CONTACT_PHONE = "+7 (701) 427-88-11";
 
