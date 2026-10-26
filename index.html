@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Научно-Практический Круглый Стол</title>
+  <meta name="description" content="ТЕКСТ" data-i18n-attr="content:meta.desc">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+  МНОГОЯЗЫЧНОСТЬ: тексты хранятся в i18n.js (русский / қазақша / English).
+  В разметке у переводимых элементов стоят атрибуты:
+    data-i18n="ключ"            — подставляет обычный текст
+    data-i18n-html="ключ"       — подставляет текст с тегами (например, <b>)
+    data-i18n-attr="атрибут:ключ" — переводит атрибут (placeholder, aria-label...)
+  Текст внутри тега — это русский вариант по умолчанию.
+-->
+
+<header class="header">
+  <div class="container nav">
+    <a href="#top" class="logo" data-i18n="logo">Научно-Практический Круглый Стол</a>
+    <nav id="menu">
+      <a href="#about" data-i18n="nav.about">О событии</a>
+      <a href="#speakers" data-i18n="nav.speakers">Спикеры</a>
+      <a href="#program" data-i18n="nav.program">Программа</a>
+      <a href="#reg" class="btn btn-small" data-i18n="nav.register">Зарегистрироваться</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Язык сайта" data-i18n-attr="aria-label:lang.aria">
+      <button type="button" data-lang="ru" title="Русский" class="active" aria-pressed="true">RU</button>
+      <button type="button" data-lang="kk" title="Қазақша" aria-pressed="false">ҚАЗ</button>
+      <button type="button" data-lang="en" title="English" aria-pressed="false">EN</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Меню" data-i18n-attr="aria-label:nav.menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        <span class="ht-to" data-i18n-html="hero.title">От технологии преобразования неявных знаний в интеллектуальные объекты <b>INSIGHT DNA</b> к научной школе цифровой инженерии управленческих знаний</span>
+        <span class="ht-sub" data-i18n="hero.sub">исследования, технологии и практики</span>
+      </h1>
+      <p class="dates" data-i18n="hero.dates">С 28 по 30 октября 2026 года в Алматы (Kazakhstan, Satbayev University) проходит 7-я Международная конференция по новым повсеместным системам и всепроникающим сетям (EUSPN-2026) — ведущая глобальная площадка для обмена инновациями и исследовательским опытом.</p>
+      <div class="hero-actions">
+        <a href="#reg" class="btn" data-i18n="hero.register">Зарегистрироваться</a>
+        <a href="#program" class="btn btn-outline" data-i18n="hero.program">Программа</a>
+      </div>
+      <div class="timer" id="timer" aria-live="polite">
+        <div><b id="t-d"></b><span data-i18n="timer.d">дней</span></div>
+        <div><b id="t-h">0</b><span data-i18n="timer.h">часов</span></div>
+        <div><b id="t-m">0</b><span data-i18n="timer.m">минут</span></div>
+        <div><b id="t-s">0</b><span data-i18n="timer.s">секунд</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partners" aria-label="Партнёры" data-i18n-attr="aria-label:partners.aria">
+    <div class="container">
+      <p class="partners-title" data-i18n="partners.title">Партнёры конференции</p>
+      <div class="partners-logos">
+        <a href="https://spmrk.kz/ru/" target="_blank" rel="noopener" title="Союз проектных менеджеров Республики Казахстан">
+          <img src="img/upmrk.png" alt="UPM RK — Союз проектных менеджеров Республики Казахстан">
+        </a>
+        <a href="https://academy.kz/" target="_blank" rel="noopener" title="Международная академия информатизации">
+          <img src="img/iia.png" alt="Международная академия информатизации (ХАА / IIA)">
+        </a>
+        <a href="https://satbayev.university/en" target="_blank" rel="noopener" title="Satbayev University">
+          <img src="img/stp.jpeg" alt="Satbayev University">
+        </a>
+        <a href="https://cs-conferences.acadiau.ca/euspn-26/" target="_blank" rel="noopener" title="Emerging Ubiquitous Systems and Pervasive Networks">
+          <img src="img/euspn.jpeg" alt="Emerging Ubiquitous Systems and Pervasive Networks">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container grid-2">
+      <div>
+        <h2 data-i18n="about.h">О мероприятии</h2>
+        <p data-i18n="about.p">Цель мероприятия — профессиональное обсуждение практических областей цифровой инженерии управленческих знаний (ЦИУЗ) и демонстрация казахстанских IT-разработок и цифровых экосистем</p>
+        <p class="note" data-i18n="about.note">Участие бесплатное</p>
+      </div>
+      <ul class="cards">
+        <li data-i18n="about.c1">Открытие. Постановка задачи</li>
+        <li data-i18n="about.c2">INSIGHT DNA: от индивидуальных идей к организационным знаниям</li>
+        <li data-i18n="about.c3">От хорошей управленческой модели к организационной практике: барьеры, механизмы принятия и закрепления изменений</li>
+        <li data-i18n="about.c4">Портфельное управление развитием организации</li>
+        <li data-i18n="about.c5">ПАУНИР — управление научно-исследовательской деятельностью как область применения ЦИУЗ</li>
+        <li data-i18n="about.c6">Международный кейс: стандартизация управления научными проектами</li>
+        <li data-i18n="about.c7">ИНВИЗ-WEB и искусственный интеллект: от взаимодействий к управленческим решениям</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="info" class="section">
+    <div class="container">
+      <article class="info">
+        <h2 data-i18n="info.h">О конференции</h2>
+
+        <!-- ВСТАВЛЯЙТЕ ТЕКСТ В i18n.js (ключи info.*): один абзац = один тег <p> -->
+        <p data-i18n="info.p1">С 28 по 30 октября 2026 года в Алматы (Kazakhstan, Satbayev University) проходит 7-я Международная конференция по новым повсеместным системам и всепроникающим сетям (EUSPN-2026) — ведущая глобальная площадка для обмена инновациями и исследовательским опытом.</p>
+
+        <p data-i18n="info.p2">В рамках этой международной конференции организуется специализированный Воркшоп AIMESaR-2026 посвященный прикладным аспектам ИИ в инженерных системах, робототехнике и управлении.</p>
+
+        <div class="info-extra">
+          <p data-i18n="info.p3">В продолжение и развитие пленарного выступления нашей команды на воркшопе AIMESaR-2026, мы проводим специализированный научно-практический круглый стол.</p>
+          <p data-i18n-html="info.l1">• <b>Площадка:</b> г. Алматы, пр. Абылай хана, 79/71, офис 315</p>
+          <p data-i18n-html="info.l2">• <b>Организаторы:</b> Консорциум АГ-3, МАИН, Satbayev University, СПМ РК</p>
+          <p data-i18n-html="info.l3">• <b>Продолжительность:</b> 110–120 минут</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="speakers" class="section alt">
+    <div class="container">
+      <h2 data-i18n="speakers.h">Спикеры</h2>
+      <div class="speakers">
+        <!-- ===== СПИКЕР 1 ===== -->
+        <!-- Фото кладите в img/speakers/. Любой размер подойдёт: рамка у всех одинаковая (4:5), фото обрезается по центру. -->
+        <!-- Имя и описание — в i18n.js (ключи sp1.name, sp.role / sp1.role и т.д.) -->
+        <article class="speaker" tabindex="0">
+          <img src="img/speakers/roganov.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="speaker-info">
+            <h3 data-i18n="sp1.name">Роганов Константин Валерьевич</h3>
+            <p data-i18n="sp.role">Должность и описание спикера</p>
+          </div>
+        </article>
+
+        <!-- ===== СПИКЕР 2 ===== -->
+        <article class="speaker" tabindex="0">
+          <img src="img/speakers/sunkar.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="speaker-info">
+            <h3 data-i18n="sp2.name">Магистр Оразбек Сункар</h3>
+            <p data-i18n="sp.role">Должность и описание спикера</p>
+          </div>
+        </article>
+
+        <!-- ===== СПИКЕР 3 ===== -->
+        <article class="speaker" tabindex="0">
+          <img src="img/speakers/cehovoy.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="speaker-info">
+            <h3 data-i18n="sp3.name">Цеховой Алексей Филиппович</h3>
+            <p data-i18n="sp3.role">Доктор технических наук - Satbayev University</p>
+          </div>
+        </article>
+
+        <!-- ===== СПИКЕР 4 ===== -->
+        <article class="speaker" tabindex="0">
+          <img src="img/speakers/akbota.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="speaker-info">
+            <h3 data-i18n="sp4.name">Акбота Акзамбеккызы</h3>
+            <p data-i18n="sp.role">Должность и описание спикера</p>
+          </div>
+        </article>
+
+        <!-- ===== СПИКЕР 5 ===== -->
+        <article class="speaker" tabindex="0">
+          <img src="img/speakers/kuralay.jpeg" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="speaker-info">
+            <h3 data-i18n="sp5.name">Куралай</h3>
+            <p data-i18n="sp.role">Должность и описание спикера</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="program" class="section">
+    <div class="container">
+      <h2 data-i18n="program.h">Программа</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-day="d1" role="tab" data-i18n="program.tab1">Фам и Имя · онлайн</button>
+        <button class="tab" data-day="d2" role="tab" data-i18n="program.tab2">дата · офлайн/онлайн</button>
+      </div>
+      <ul class="schedule" id="d1">
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="talk1.title">Организационная трансформация и управление знаниями — К.В. Роганов</span></summary><div class="s-more"><p data-i18n="talk1.p1">От хорошей управленческой модели к организационной практике: барьеры, механизмы принятия и закрепления изменений.</p><p data-i18n="talk1.p2">В докладе рассматривается проблема внедрения новых управленческих методов и технологий, которые, несмотря на их потенциальную эффективность, не всегда становятся устойчивой практикой организации. Предлагается исследовать барьеры внедрения, механизмы принятия изменений участниками, коллективного обучения, управления неявными знаниями и закрепления новых способов взаимодействия в организационной деятельности. В качестве эмпирической площадки рассматривается трансформация Международной академии информатизации (МАИН) с применением управленческих технологий, развиваемых в рамках научной школы «Цифровой инженерии управленческих знаний» (ЦИУЗ). Цель исследования — выявить барьеры, определить условия и факторы, обеспечивающие успешное внедрение и устойчивое воспроизводство новых управленческих практик.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li><time>XX:XX</time><span data-i18n="sch.lunch">Перерыв на обед</span></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li><time>XX:XX</time><span data-i18n="sch.end1">Завершение первого дня</span></li>
+      </ul>
+      <ul class="schedule" id="d2" hidden>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.welcome">Приветственное слово</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.round">Круглый стол:</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li><time>XX:XX</time><span data-i18n="sch.break15">Перерыв 15 минут</span></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li class="has-more"><details><summary><time>XX:XX</time><span class="s-title" data-i18n="sch.topic">тема обсуждения</span></summary><div class="s-more"><p data-i18n="sch.desc">Подробное описание: докладчик, аннотация, место проведения.</p></div></details></li>
+        <li><time>XX:XX</time><span data-i18n="sch.close">Закрытие</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reg" class="section alt">
+    <div class="container narrow">
+      <h2 data-i18n="reg.h">Регистрация</h2>
+      <p class="lead" data-i18n="reg.lead">Заполните форму — мы отправим ссылку на подключение или адрес площадки.</p>
+
+      <form id="regForm" novalidate>
+        <div class="field">
+          <label for="name" data-i18n="f.name">ФИО *</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+          <small class="error"></small>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="email" data-i18n="f.email">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="f.phone">Телефон *</label>
+            <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+            <small class="error"></small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="company" data-i18n="f.company">Компания</label>
+            <input id="company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="position" data-i18n="f.position">Должность</label>
+            <input id="position" name="position" type="text">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="days" data-i18n="f.days">Дни участия *</label>
+            <!-- value не зависит от языка: в заявках всегда приходит один и тот же код -->
+            <select id="days" name="days" required>
+              <option value="" data-i18n="f.choose">Выберите…</option>
+              <option value="day1" data-i18n="f.d1">дата конференции</option>
+              <option value="day2" data-i18n="f.d2">дата конференции</option>
+            </select>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="format" data-i18n="f.format">Формат *</label>
+            <select id="format" name="format" required>
+              <option value="" data-i18n="f.choose">Выберите…</option>
+              <option value="online" data-i18n="f.online">Онлайн</option>
+              <option value="offline" data-i18n="f.offline">Офлайн (дата конференции)</option>
+            </select>
+            <small class="error"></small>
+          </div>
+        </div>
+        <div class="field check">
+          <label><input id="consent" name="consent" type="checkbox" required> <span data-i18n="f.consent">Согласен(на) на обработку персональных данных *</span></label>
+          <small class="error"></small>
+        </div>
+        <button type="submit" class="btn btn-block" id="submitBtn" data-i18n="f.submit">Зарегистрироваться</button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p><span data-i18n="footer.tel">Тел.:</span> <a href="tel:+77014278811">+7-XXX-XXX-XX-XX</a> · <span data-i18n="footer.email">Email:</span> <a href="mailto:spmrk.kz@gmail.com">spmrk.kz@gmail.com</a></p>
+    <p data-i18n="footer.text">ТЕКСТ</p>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
