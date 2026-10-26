@@ -671,3 +671,7 @@ input:focus, select:focus {
     overflow-wrap: anywhere;    /* длинные email не вылезают за карточку */
   }
 }
+
+/* Описания докладов: сохраняем абзацы из текста */
+.schedule .s-more p { white-space: pre-line; }
+.schedule .s-more p + p { margin-top: 10px; }
