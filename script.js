@@ -131,15 +131,14 @@ form.addEventListener("submit", async e => {
   btn.textContent = tr("f.sending");
   try {
     if (FORM_ENDPOINT) {
-      const res = await fetch(FORM_ENDPOINT, {
+      // Google Apps Script не отдаёт CORS-заголовки, поэтому режим no-cors:
+      // данные уходят в таблицу, а ответ браузер читать не даёт.
+      await fetch(FORM_ENDPOINT, {
         method: "POST",
-        // text/plain нужен для Google Apps Script (иначе браузер блокирует запрос)
+        mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(data)
       });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const json = await res.json();
-      if (!json.ok) throw new Error(json.error || "Server error");
     } else {
       // Демо-режим: без сервера сохраняем в браузере
       const list = JSON.parse(localStorage.getItem("registrations") || "[]");
@@ -149,6 +148,7 @@ form.addEventListener("submit", async e => {
     showMsg("ok", "msg.ok", { email: data.email });
     form.reset();
   } catch (err) {
+    console.error(err);
     showMsg("fail", "msg.fail", { phone: CONTACT_PHONE });
   } finally {
     btn.disabled = false;
