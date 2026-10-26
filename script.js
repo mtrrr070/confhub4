@@ -148,12 +148,9 @@ form.addEventListener("submit", async e => {
     }
     showMsg("ok", "msg.ok", { email: data.email });
     form.reset();
-  } catch (err) {
+    } catch (err) {
+    console.error(err);
     showMsg("fail", "msg.fail", { phone: CONTACT_PHONE });
-  } finally {
-    btn.disabled = false;
-    btn.textContent = tr("f.submit");
-  }
 });
 
 /* ===== Переключение языка ===== */
