@@ -597,20 +597,29 @@ input:focus, select:focus {
 }
 
 /* Читабельность блоков «О мероприятии» и «О конференции» */
-#about .grid-2 > div > p:not(.note) {
+.about-text { max-width: 860px; }
+#about .about-text p:not(.note) {
   font-size: 1.15rem;
   line-height: 1.75;
   color: var(--text);
+  text-align: left;
+  margin-bottom: 18px;
+}
+#about .about-text .about-lead {
+  font-size: 1.4rem;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+#about .about-text .about-goal {
+  border-left: 3px solid var(--primary);
+  padding-left: 19px;
+  font-weight: 600;
 }
 #about .note {
-  margin-top: 22px;
+  margin-top: 10px;
   padding: 10px 20px;
   font-size: 1.05rem;
-}
-#about .cards li {
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: var(--text);
 }
 .info { max-width: 860px; }
 .info p {
@@ -624,7 +633,8 @@ input:focus, select:focus {
 .info strong, .info b { color: var(--primary-dark); font-weight: 700; }
 .info-extra p:nth-of-type(n+2) { margin-bottom: 10px; }
 @media (max-width: 760px) {
-  #about .grid-2 > div > p:not(.note), .info p { font-size: 1.05rem; }
+  #about .about-text p:not(.note), .info p { font-size: 1.05rem; }
+  #about .about-text .about-lead { font-size: 1.25rem; }
 }
 
 /* Читабельность раскрывающегося описания в программе */
@@ -667,6 +677,7 @@ input:focus, select:focus {
     margin-top: 8px;
     transform: none;
     font-size: .85rem;
+    color: #fff;                /* на телефоне белый текст вместо жёлтого */
     white-space: pre-line;      /* сохраняет переносы строк из текста */
     overflow-wrap: anywhere;    /* длинные email не вылезают за карточку */
   }
@@ -675,3 +686,6 @@ input:focus, select:focus {
 /* Описания докладов: сохраняем абзацы из текста */
 .schedule .s-more p { white-space: pre-line; }
 .schedule .s-more p + p { margin-top: 10px; }
+
+/* Антиспам: поле-ловушка скрыто от людей */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

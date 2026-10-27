@@ -2,7 +2,7 @@
 
 /* ===== Настройки ===== */
 // Дата начала конференции (Алматы, UTC+5)
-const EVENT_DATE = new Date("2026-10-30T10:00:00+05:00");
+const EVENT_DATE = new Date("2026-10-31T14:00:00+05:00");
 // Адрес, куда отправляются данные формы (PHP, Google Apps Script, Formspree и т.п.).
 // Пока пусто — заявка сохраняется локально в браузере (режим демо).
 const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbyvj5WeJYqmtypCQLKK3O0Xt8SJJasl1aFGGGAsHufS7QaJQa75uJeQedF9myOVpmuk/exec";
@@ -106,10 +106,20 @@ function validateField(input) {
   return res === true;
 }
 
-form.querySelectorAll("input, select").forEach(el => {
+form.querySelectorAll(".field input, .field select").forEach(el => {
   el.addEventListener("blur", () => validateField(el));
   el.addEventListener("input", () => el.closest(".field").classList.contains("invalid") && validateField(el));
 });
+
+/* ===== Антиспам ===== */
+const MIN_FILL_MS = 3000;   // быстрее человек форму не заполнит
+const COOLDOWN_MS = 60000;  // повторная отправка с этого браузера — не чаще раза в минуту
+let formStart = 0;          // момент, когда пользователь начал заполнять форму
+form.addEventListener("focusin", () => { if (!formStart) formStart = Date.now(); });
+
+function lastSubmitAt() {
+  try { return Number(localStorage.getItem("lastSubmit") || 0); } catch (e) { return 0; }
+}
 
 /* ===== Отправка ===== */
 form.addEventListener("submit", async e => {
@@ -126,6 +136,18 @@ form.addEventListener("submit", async e => {
   const data = Object.fromEntries(new FormData(form));
   data.createdAt = new Date().toISOString();
   data.lang = currentLang; // на каком языке заполнена форма
+  data.elapsed = formStart ? Date.now() - formStart : 0; // сервер тоже проверяет скорость заполнения
+
+  // 1) Поле-ловушка заполнено — это бот. Делаем вид, что всё хорошо, но ничего не отправляем.
+  if (data.hp_check) {
+    showMsg("ok", "msg.ok", { email: data.email, phone: data.phone });
+    form.reset();
+    return;
+  }
+  // 2) Слишком быстро заполнено
+  if (data.elapsed < MIN_FILL_MS) { showMsg("fail", "msg.fast"); return; }
+  // 3) Слишком частая отправка с этого браузера
+  if (Date.now() - lastSubmitAt() < COOLDOWN_MS) { showMsg("fail", "msg.limit"); return; }
 
   btn.disabled = true;
   btn.textContent = tr("f.sending");
@@ -145,8 +167,10 @@ form.addEventListener("submit", async e => {
       list.push(data);
       localStorage.setItem("registrations", JSON.stringify(list));
     }
-    showMsg("ok", "msg.ok", { email: data.email });
+    try { localStorage.setItem("lastSubmit", String(Date.now())); } catch (e) {}
+    showMsg("ok", "msg.ok", { email: data.email, phone: data.phone });
     form.reset();
+    formStart = 0;
   } catch (err) {
     console.error(err);
     showMsg("fail", "msg.fail", { phone: CONTACT_PHONE });
@@ -158,7 +182,7 @@ form.addEventListener("submit", async e => {
 
 /* ===== Переключение языка ===== */
 function applyLang(lang) {
-  currentLang = window.I18N[lang] ? lang : "ru";
+  currentLang = Object.prototype.hasOwnProperty.call(window.I18N, lang) ? lang : "ru";
   document.documentElement.lang = currentLang;
   document.title = tr("meta.title");
 
@@ -198,6 +222,6 @@ document.querySelectorAll(".lang button").forEach(b => {
   let saved = null;
   try { saved = localStorage.getItem("lang"); } catch (e) {}
   const fromUrl = new URLSearchParams(location.search).get("lang");
-  const start = [fromUrl, saved].find(l => l && window.I18N[l]) || "ru";
+  const start = [fromUrl, saved].find(l => l && Object.prototype.hasOwnProperty.call(window.I18N, l)) || "ru";
   applyLang(start); // русский тоже из i18n.js — единый источник текста
 })();
