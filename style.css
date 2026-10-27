@@ -689,3 +689,44 @@ input:focus, select:focus {
 
 /* Антиспам: поле-ловушка скрыто от людей */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ===== О мероприятии: текст + карточка фактов ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+  max-width: 1040px;
+}
+.facts {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px 20px;
+}
+.fact {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+.fact:first-child { border-top: 0; }
+.fact svg { flex: none; margin-top: 2px; color: var(--primary); }
+.fact b { display: block; font-weight: 650; color: var(--primary-dark); line-height: 1.35; }
+.fact span { display: block; color: var(--muted); font-size: .92rem; }
+.about-ctx {
+  max-width: 1040px;
+  margin-top: 40px;
+  padding: 22px 26px;
+  background: #edf5ff;
+  border-radius: 12px;
+  color: var(--text);
+}
+.about-ctx h3 { font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 12px; }
+.about-ctx p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 10px; }
+.about-ctx .ctx-org { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid rgba(21,88,214,.18); }
+.about-ctx b { color: var(--primary-dark); font-weight: 700; }
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 28px; }
+}
